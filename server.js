@@ -1,5 +1,4 @@
 var gym = require('./myGym');
-//var val = inventory.equipment();
 
 // modules =================================================
 var express        = require('express');
@@ -10,17 +9,21 @@ var port = process.env.PORT || 8080;
 
 
 app.get('/', function(req, res){
-    res.send('README for usage');
+    res.send('NICE TO SEE U AGAIN AT THE CHURCH OF IRON, CURRENTLY PLAYING: good ass intro - chance the rapper');
 });
 
 
+app.post('/addEquipment', function(req, res){
+	//pass
+});
 
 
-console.log("ready to rumble on port " + port);
-//console.log(val);
-console.log(gym.inventory["test1"]);
-var e = new gym.Equipment("NAME","1");
-console.log(e.testFunction());
+var e = new gym.Equipment("squat rack",5);
+gym.inventory.addEquipment(e);
+for(var key in gym.inventory.list) {
+     console.log(key + ": " + gym.inventory.list[key]);
+}
+
 app.listen(port);
 
 

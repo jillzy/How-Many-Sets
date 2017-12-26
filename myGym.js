@@ -1,23 +1,51 @@
-/*	
-	equipment object!
-	responsible for updating availability	
-*/
+/****************************************************
+	equipment obj
+	responsible for updating availability
+****************************************************/
 function Equipment(name, total) {
-		//{ name: [total: x, available: y] }
+		
 		this.name = name;
-		var available = total;
-		this.details = (total, available);
+		var free = total;
+		this.info = [total, free];
+		
+		this.infoEnum = {
+			free: this.info[1],
+			total : this.info[0]
+		}
 
-		this.testFunction = function(){
+		this.incAvailable = function() {
+			this.infoEnum.free += 1;
+			console.log(this.infoEnum.free);
+			return "ok";
+		}
+		
+		this.decAvailable = function() {
+			this.infoEnum.free -= 1;
+			console.log(this.infoEnum.free);
 			return "ok";
 		};
 		
 }
 
-var inventory = {
-					"test1":"hi",
-					"test2":"bye"
-				}
+/*********************************************************	
+	a list of equipment objs treated as key-value pairs:
+	inventory = {
+					"e1": [total, free],
+					"e2": [total, free]
+	}
+**********************************************************/
+function Inventory() {
+	this.list = {
+		"test1":"1, 1",
+		"test2":"2, 2"
+	}
+	
+	this.addEquipment = function(e) {
+		this.list[e.name] = e.info;
+	}
+};
+
+var inventory = new Inventory();
 
 //empty object for export purposes				
 var gym = new Object();
