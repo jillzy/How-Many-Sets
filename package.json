@@ -1,0 +1,11 @@
+{
+  "name": "how-many0sets",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "~1.4.2",
+    "express": "^4.5.1",
+    "method-override": "~2.0.2",
+    "mongodb": "^2.2.33",
+    "request": "^2.81.0"
+  }
+}

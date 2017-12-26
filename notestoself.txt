@@ -1,0 +1,23 @@
+/*module.exports = { 
+
+	equipment: function equipment(name, total) {
+		//{ name: [total: x, available: y] }
+		this.name = name;
+		var available = total;
+		this.details = (total, available);
+		return "HI HI HI"
+	}
+
+	/*var inventory = {};
+
+	addToInventory(equipment){
+		inventory[equipment.name] = equipment.details;
+	}
+
+	returnInventory(){
+		return inventory;
+	}
+	
+}*/
+
+i choose not to use this for style purposes?
