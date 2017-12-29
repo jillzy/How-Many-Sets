@@ -4,13 +4,17 @@
 ****************************************************/
 function Equipment(name, total) {
 		
-		this.name = name;
-		var free = total;
-		this.info = [total, free];
+		this.name 	= name; 
+		var free 	= total; 	//set the number of free equipment to the total
+		var users 	= []; 		//list of current users of the equipment
+		var alerts 	= []; 		//list of users signed up for alerts
+		this.info 	= [total, free, users, alerts];
 		
 		this.infoEnum = {
-			free: this.info[1],
-			total : this.info[0]
+			total : this.info[0],
+			free: 	this.info[1],
+			users: 	this.info[2],
+			alerts: this.info[3]
 		}
 
 		this.incAvailable = function() {
@@ -23,6 +27,22 @@ function Equipment(name, total) {
 			this.infoEnum.free -= 1;
 			console.log(this.infoEnum.free);
 			return "ok";
+		}
+		
+		this.addUser = function (username) {
+			
+		}
+		
+		this.removeUser = function (username) {
+			
+		}
+		
+		this.addAlert = function (username) {
+			
+		}
+		
+		this.removeAlert = function (username) {
+			
 		};
 		
 }
@@ -30,18 +50,52 @@ function Equipment(name, total) {
 /*********************************************************	
 	a list of equipment objs treated as key-value pairs:
 	inventory = {
-					"e1": [total, free],
-					"e2": [total, free]
+					"e1": e1,
+					"e2": e2
 	}
 **********************************************************/
 function Inventory() {
+	//!!! TODO: dictionary must carry the object not just strings
+	//dictionary of all the equipment info
 	this.list = {
-		"test1":"1, 1",
-		"test2":"2, 2"
 	}
 	
-	this.addEquipment = function(e) {
-		this.list[e.name] = e.info;
+	//create an equipment obj and add to inventory list
+	this.add = function(name, total) {
+		var e = new Equipment(name, total);
+		this.list[e.name] = e;
+	}
+	//remove one availability
+	this.decrementAvailable = function (name) {
+		if (this.list[name].infoEnum.free > 0)
+			this.list[name].infoEnum.free -= 1;
+		else
+			console.log("ERROR: decrementAvailable()");
+	}
+	
+	//add one availability
+	this.incrementAvailable = function (name) {
+		if (this.list[name].infoEnum.total
+				> this.list[name].infoEnum.free)
+			this.list[name].infoEnum.free += 1;
+		else
+			console.log("ERROR: incrementAvailable()");
+
+		
+	}
+	//remove x amount of equipment from total
+	this.remove = function(name, num) {
+		var total = this.list[name].infoEnum.total;
+		if (total > num) 
+			total -= num;
+		else if (total == num)
+			this.list[name] = null;
+		else
+			console.log("ERROR: remove()")
+	}
+	//remove from inventory entirely
+	this.removeAll = function(name) {
+		this.list[name] = null;
 	}
 };
 
