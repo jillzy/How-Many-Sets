@@ -14,6 +14,7 @@ app.get('/', function(req, res){
 });
 
 //refresh inventory display whenever changed
+//hmmmm.....
 app.get('/returnInventory', function(req, res){
 });
 
@@ -22,13 +23,13 @@ app.get('/returnInventory', function(req, res){
 app owner only interface
 ------------------------*/
 app.post('/addEquipment', function(req, res){
-	//pass a rep of object
+	//pass payload containing args to construct equipment obj
 });
 
 /*----------------------
 user interface
 ------------------------*/
-//request an alert for a particular equipment
+//request to be notified when specified equipment becomes free
 app.post('/requestAlert', function(req, res){
 	
 });

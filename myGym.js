@@ -55,10 +55,9 @@ function Equipment(name, total) {
 	}
 **********************************************************/
 function Inventory() {
-	//!!! TODO: dictionary must carry the object not just strings
+
 	//dictionary of all the equipment info
-	this.list = {
-	}
+	this.list = {}
 	
 	//create an equipment obj and add to inventory list
 	this.add = function(name, total) {
@@ -83,7 +82,7 @@ function Inventory() {
 
 		
 	}
-	//remove x amount of equipment from total
+	//remove x amount of equipment from its total
 	this.remove = function(name, num) {
 		var total = this.list[name].infoEnum.total;
 		if (total > num) 
@@ -93,7 +92,8 @@ function Inventory() {
 		else
 			console.log("ERROR: remove()")
 	}
-	//remove from inventory entirely
+	
+	//remove equipment from inventory entirely
 	this.removeAll = function(name) {
 		this.list[name] = null;
 	}
